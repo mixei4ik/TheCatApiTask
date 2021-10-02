@@ -11,7 +11,8 @@ interface CatService {
     suspend fun getListOfCats(
         @Query("limit") limit: Int = DEFAULT_PAGE_SIZE,
         @Query("page") page: Int = 0,
-        @Query("order") order: String = "ACS",
+        @Query("mime_types") format: String = "jpg, png",
+        @Query("order") order: String = "ACS"
     ): List<Cat>
 
     companion object {

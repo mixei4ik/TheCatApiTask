@@ -4,14 +4,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.fragment.app.FragmentActivity
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import coil.api.load
+import com.example.thecatapitask.Navigator
 import com.example.thecatapitask.R
 import com.example.thecatapitask.data.Cat
 
-class CatAdapter : PagingDataAdapter<Cat, CatViewHolder>(DiffUtilCallBack()) {
+class CatAdapter(private val nav: Navigator) : PagingDataAdapter<Cat, CatViewHolder>(DiffUtilCallBack()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CatViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.layout_item, parent, false)
@@ -20,6 +22,12 @@ class CatAdapter : PagingDataAdapter<Cat, CatViewHolder>(DiffUtilCallBack()) {
 
     override fun onBindViewHolder(holder: CatViewHolder, position: Int) {
         holder.bind(getItem(position)!!)
+
+        holder.itemView.setOnClickListener{
+            nav.openCatInfoFragment(getItem(position)?.imageUrl!!, getItem(position)?.id!!)
+        }
+
+
     }
 
     class  DiffUtilCallBack: DiffUtil.ItemCallback<Cat>() {
@@ -43,3 +51,4 @@ class CatViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         imageView.load(data.imageUrl)
     }
 }
+

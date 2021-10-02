@@ -15,16 +15,14 @@ class CatPagingSource(
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Cat> = try {
         val pageNumber = params.key ?: 0
 
-        Log.d(TAG, "$pageNumber")
+        Log.d(TAG, "page number $pageNumber")
 
         val response = myBackend.getListOfCats(page = pageNumber)
 
-        Log.d(TAG, "$response")
+        Log.d(TAG, "items ${response.size}")
 
         val prevKey = if (pageNumber > 0) pageNumber - 1 else null
         val nextKey = if (response.isNotEmpty()) pageNumber + 1 else null
-
-        Log.d(TAG, "$response; $prevKey; $nextKey")
 
         LoadResult.Page(
             data = response,
