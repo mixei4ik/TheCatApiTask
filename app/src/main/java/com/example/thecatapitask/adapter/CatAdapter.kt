@@ -13,27 +13,14 @@ import com.example.thecatapitask.data.Cat
 
 class CatAdapter : PagingDataAdapter<Cat, CatViewHolder>(DiffUtilCallBack()) {
 
-/*    private val items = mutableListOf<Cat>()*/
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CatViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.layout_item, parent, false)
         return CatViewHolder(view)
     }
 
-/*    override fun getItemCount(): Int {
-        return items.size
-    }*/
-
     override fun onBindViewHolder(holder: CatViewHolder, position: Int) {
-/*        val imageUrl = items[position].imageUrl ?: ""
-        holder.bind(imageUrl)*/
         holder.bind(getItem(position)!!)
     }
-
-/*    fun addItems(newItems: List<Cat>) {
-        items.addAll(newItems)
-        notifyDataSetChanged()
-    }*/
 
     class  DiffUtilCallBack: DiffUtil.ItemCallback<Cat>() {
         override fun areItemsTheSame(oldItem: Cat, newItem: Cat): Boolean {

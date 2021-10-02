@@ -4,8 +4,6 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.thecatapitask.adapter.CatAdapter
@@ -32,12 +30,6 @@ class MainActivity : AppCompatActivity() {
             Log.d(TAG, "recyclerView init")
         }
 
-/*        catViewModel.items.observe(this, Observer {
-            it ?: return@Observer
-            itemAdapter.addItems(it)
-        })*/
-
-/*        val viewModel  = ViewModelProvider(this).get(CatViewModel::class.java)*/
         lifecycleScope.launchWhenCreated {
             catViewModel.getListData().collectLatest {
                 itemAdapter.submitData(it)
