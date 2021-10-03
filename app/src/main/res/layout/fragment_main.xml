@@ -13,7 +13,7 @@
         android:layout_width="0dp"
         android:layout_height="?android:attr/actionBarSize"
         android:background="@color/purple_500"
-        app:title="The Cats Gallery"
+        app:title="Cat Gallery"
         app:titleTextColor="@color/white"
         app:navigationIconTint="@color/white"
         app:layout_constraintStart_toStartOf="parent"
