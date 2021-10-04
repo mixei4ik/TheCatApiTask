@@ -57,7 +57,8 @@ class CatInfoFragment : Fragment() {
         with(binding) {
             imageCat.load(param1)
             textCatId.text = param2
-            saveCat.setOnClickListener { getBitmapFromUrlAndSave(param1) }
+            saveCatButton.setOnClickListener { getBitmapFromUrlAndSave(param1) }
+            backInGalleryButton.setOnClickListener { activity?.onBackPressed() }
         }
     }
 
