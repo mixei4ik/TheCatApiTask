@@ -18,19 +18,6 @@ class MainFragment : Fragment() {
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
 
-    private val itemAdapter = CatAdapter(object : Navigator {
-        override fun openCatInfoFragment(param1: String, param2: String) {
-            parentFragmentManager.beginTransaction()
-                .setCustomAnimations(
-                    R.anim.card_flip_left_in,
-                    R.anim.card_flip_left_out
-                )
-                .addToBackStack(null)
-                .replace(R.id.fragmentContainer, CatInfoFragment.newInstance(param1, param2))
-                .commit()
-        }
-    })
-
     private val catViewModel by viewModels<CatViewModel>()
 
     override fun onCreateView(
@@ -39,23 +26,37 @@ class MainFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentMainBinding.inflate(inflater, container, false)
+
+        val itemAdapter = CatAdapter(object : Navigator {
+            override fun openCatInfoFragment(param1: String, param2: String) {
+                parentFragmentManager.beginTransaction()
+                    .setCustomAnimations(
+                        R.anim.card_flip_left_in,
+                        R.anim.card_flip_left_out
+                    )
+                    .addToBackStack(null)
+                    .replace(R.id.fragmentContainer, CatInfoFragment.newInstance(param1, param2))
+                    .commit()
+            }
+        })
+
         itemAdapter.stateRestorationPolicy =
             RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
-        initRecyclerView()
-        initRecyclerAdapter()
+        initRecyclerView(itemAdapter)
+        initRecyclerAdapter(itemAdapter)
 
         return binding.root
     }
 
-    private fun initRecyclerAdapter() {
+    private fun initRecyclerAdapter(itemAdapter: CatAdapter) {
         lifecycleScope.launchWhenCreated {
-            catViewModel.getListData().collectLatest {
+            catViewModel.catModel.collectLatest {
                 itemAdapter.submitData(it)
             }
         }
     }
 
-    private fun initRecyclerView() {
+    private fun initRecyclerView(itemAdapter: CatAdapter) {
         binding.recyclerView.apply {
             adapter = itemAdapter
             layoutManager = LinearLayoutManager(activity)
