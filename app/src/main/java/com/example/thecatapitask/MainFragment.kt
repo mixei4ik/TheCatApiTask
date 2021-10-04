@@ -21,6 +21,10 @@ class MainFragment : Fragment() {
     private val itemAdapter = CatAdapter(object : Navigator {
         override fun openCatInfoFragment(param1: String, param2: String) {
             parentFragmentManager.beginTransaction()
+                .setCustomAnimations(
+                    R.anim.card_flip_left_in,
+                    R.anim.card_flip_left_out
+                )
                 .addToBackStack(null)
                 .replace(R.id.fragmentContainer, CatInfoFragment.newInstance(param1, param2))
                 .commit()
