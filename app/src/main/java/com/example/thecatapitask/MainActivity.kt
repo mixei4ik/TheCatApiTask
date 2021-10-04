@@ -2,6 +2,7 @@ package com.example.thecatapitask
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.thecatapitask.UI.MainFragment
 import com.example.thecatapitask.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

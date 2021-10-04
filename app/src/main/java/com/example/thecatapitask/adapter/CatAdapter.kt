@@ -8,7 +8,7 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.example.thecatapitask.Navigator
+import com.example.thecatapitask.UI.Navigator
 import com.example.thecatapitask.R
 import com.example.thecatapitask.data.Cat
 

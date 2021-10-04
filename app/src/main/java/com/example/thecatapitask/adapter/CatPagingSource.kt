@@ -1,7 +1,8 @@
-package com.example.thecatapitask
+package com.example.thecatapitask.adapter
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
+import com.example.thecatapitask.CatService
 import com.example.thecatapitask.data.Cat
 import retrofit2.HttpException
 import java.io.IOException

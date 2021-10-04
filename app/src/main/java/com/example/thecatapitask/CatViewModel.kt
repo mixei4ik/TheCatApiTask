@@ -1,12 +1,12 @@
 package com.example.thecatapitask
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
+import com.example.thecatapitask.adapter.CatPagingSource
 import com.example.thecatapitask.data.Cat
 import kotlinx.coroutines.flow.Flow
 

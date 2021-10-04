@@ -1,4 +1,4 @@
-package com.example.thecatapitask
+package com.example.thecatapitask.UI
 
 import android.content.ContentValues
 import android.graphics.Bitmap

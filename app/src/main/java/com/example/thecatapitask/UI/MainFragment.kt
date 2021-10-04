@@ -1,4 +1,4 @@
-package com.example.thecatapitask
+package com.example.thecatapitask.UI
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,6 +9,8 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.thecatapitask.CatViewModel
+import com.example.thecatapitask.R
 import com.example.thecatapitask.adapter.CatAdapter
 import com.example.thecatapitask.databinding.FragmentMainBinding
 import kotlinx.coroutines.flow.collectLatest
