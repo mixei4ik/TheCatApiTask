@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="16dp"
-        android:elevation="4dp"
+        app:cardBackgroundColor="@color/purple_200"
         app:cardCornerRadius="8dp">
 
         <ImageView
@@ -20,6 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/purple_200"
+            android:layout_gravity="center"
             android:scaleType="centerCrop"
             android:adjustViewBounds="true"
             tools:srcCompat="@tools:sample/avatars" />
