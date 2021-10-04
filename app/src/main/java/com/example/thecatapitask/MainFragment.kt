@@ -8,12 +8,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.thecatapitask.adapter.CatAdapter
 import com.example.thecatapitask.databinding.FragmentMainBinding
 import kotlinx.coroutines.flow.collectLatest
 
 class MainFragment : Fragment() {
-
 
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
@@ -25,17 +25,18 @@ class MainFragment : Fragment() {
                 .replace(R.id.fragmentContainer, CatInfoFragment.newInstance(param1, param2))
                 .commit()
         }
-
     })
 
     private val catViewModel by viewModels<CatViewModel>()
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentMainBinding.inflate(inflater, container, false)
-
+        itemAdapter.stateRestorationPolicy =
+            RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
         initRecyclerView()
         initRecyclerAdapter()
 

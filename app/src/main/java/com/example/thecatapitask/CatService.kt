@@ -18,8 +18,6 @@ interface CatService {
     companion object {
         const val DEFAULT_PAGE_SIZE = 10
         const val API_KEY = "9d0ecdda-4340-4dae-a1cf-dd8200c031df"
-
     }
 }
-
 

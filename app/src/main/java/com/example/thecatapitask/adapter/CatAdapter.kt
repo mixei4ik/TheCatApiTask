@@ -22,23 +22,18 @@ class CatAdapter(private val nav: Navigator) : PagingDataAdapter<Cat, CatViewHol
     override fun onBindViewHolder(holder: CatViewHolder, position: Int) {
         holder.bind(getItem(position)!!)
 
-        holder.itemView.setOnClickListener{
+        holder.itemView.setOnClickListener {
             nav.openCatInfoFragment(getItem(position)?.imageUrl!!, getItem(position)?.id!!)
         }
-
-
     }
-
     class  DiffUtilCallBack: DiffUtil.ItemCallback<Cat>() {
         override fun areItemsTheSame(oldItem: Cat, newItem: Cat): Boolean {
             return oldItem.id == newItem.id
         }
-
-        override fun areContentsTheSame(oldItem: Cat, newItem: Cat): Boolean {
-            return oldItem.id == newItem.id
-                    && oldItem.imageUrl == newItem.imageUrl
+        override fun areContentsTheSame(oldItem: Cat, newItem: Cat) : Boolean {
+            return oldItem.id == newItem.id &&
+                oldItem.imageUrl == newItem.imageUrl
         }
-
     }
 }
 
@@ -50,4 +45,3 @@ class CatViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         imageView.load(data.imageUrl)
     }
 }
-

@@ -11,7 +11,7 @@ private const val TAG = "Paging Source"
 
 class CatPagingSource(
     private val myBackend: CatService,
-    ) : PagingSource<Int, Cat>() {
+) : PagingSource<Int, Cat>() {
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Cat> = try {
         val pageNumber = params.key ?: 0
 
@@ -29,7 +29,6 @@ class CatPagingSource(
             prevKey = prevKey,
             nextKey = nextKey
         )
-
     } catch (e: IOException) {
         LoadResult.Error(e)
     } catch (e: HttpException) {
@@ -39,6 +38,5 @@ class CatPagingSource(
     override fun getRefreshKey(state: PagingState<Int, Cat>): Int? {
         Log.d(TAG, "get refresh key")
         return state.anchorPosition?.let { state.closestItemToPosition(it)?.id?.toInt() }
-
     }
 }

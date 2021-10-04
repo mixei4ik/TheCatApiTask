@@ -43,7 +43,8 @@ class CatInfoFragment : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentCatInfoBinding.inflate(inflater, container, false)
@@ -56,7 +57,7 @@ class CatInfoFragment : Fragment() {
         with(binding) {
             imageCat.load(param1)
             textCatId.text = param2
-            saveCat.setOnClickListener {getBitmapFromUrlAndSave(param1) }
+            saveCat.setOnClickListener { getBitmapFromUrlAndSave(param1) }
         }
     }
 

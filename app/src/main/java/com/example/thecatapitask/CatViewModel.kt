@@ -12,7 +12,7 @@ import kotlinx.coroutines.flow.Flow
 
 private const val TAG = "ViewModel"
 
-class CatViewModel: ViewModel() {
+class CatViewModel : ViewModel() {
 
     lateinit var retroService: CatService
 
@@ -23,12 +23,11 @@ class CatViewModel: ViewModel() {
 
     fun getListData(): Flow<PagingData<Cat>> {
         Log.d(TAG, "trial get list data")
-        return Pager(config = PagingConfig(
-                pageSize = CatService.DEFAULT_PAGE_SIZE,
-                enablePlaceholders = true,
-                maxSize = 100),
-            pagingSourceFactory = {CatPagingSource(retroService)}
+        return Pager( config = PagingConfig(
+            pageSize = CatService.DEFAULT_PAGE_SIZE,
+            enablePlaceholders = true,
+            maxSize = 100 ),
+            pagingSourceFactory = { CatPagingSource(retroService) }
         ).flow.cachedIn(viewModelScope)
     }
-
 }
