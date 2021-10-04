@@ -18,7 +18,7 @@ class CatViewModel : ViewModel() {
         retroService = RetroInstance.getRetroInstance().create(CatService::class.java)
     }
 
-    val catModel: Flow<PagingData<Cat>> = Pager( config = PagingConfig(
+    val catList: Flow<PagingData<Cat>> = Pager( config = PagingConfig(
             pageSize = CatService.DEFAULT_PAGE_SIZE,
             enablePlaceholders = true,
             maxSize = 100 ),

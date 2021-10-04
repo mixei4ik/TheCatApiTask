@@ -50,7 +50,7 @@ class MainFragment : Fragment() {
 
     private fun initRecyclerAdapter(itemAdapter: CatAdapter) {
         lifecycleScope.launchWhenCreated {
-            catViewModel.catModel.collectLatest {
+            catViewModel.catList.collectLatest {
                 itemAdapter.submitData(it)
             }
         }

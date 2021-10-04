@@ -42,6 +42,7 @@ class CatViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     private val imageView = view.findViewById<ImageView>(R.id.imageView)
 
     fun bind(data: Cat) {
+
         imageView.load(data.imageUrl)
     }
 }
